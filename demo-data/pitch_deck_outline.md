@@ -1,107 +1,77 @@
-
 # PROCTOREDGE
 ## Real-Time AI Anti-Cheat Camera Proctoring with Automated Exam Assessment
 
-### Slide 1 – Title
-- Project: ProctorEdge
-- Tagline: Smarter, Fairer and More Reliable Online Assessments
-- Team: Four Members
-- Internship Challenge: Factskoot Campus Challenge 2026
+### Slide 1 – Title & Factskoot Challenge Fit
+- **Project:** ProctorEdge
+- **Tagline:** Smarter Assessments. Better Insights.
+- **Challenge:** Factskoot Internship Campus Challenge 2026
+- **Project Focus:** Live Campus Project – Computer Vision
+- **Team:** Four Members
+- **Core Idea:** Combine real-time camera-based proctoring with automated examination assessment.
 
-### Slide 2 – Problem Statement
-- Online examinations are vulnerable to suspicious activities.
-- Manual monitoring of candidates is difficult at scale.
-- Evaluating descriptive answers takes time and effort.
-- Traditional systems may not provide clear evidence or consistent feedback.
+### Slide 2 – The Problem
+- **False-positive panic:** Brief movements or looking away can trigger unnecessary suspicion.
+- **Exam loopholes:** Hidden phones, additional people and pre-recorded video loops can compromise online examinations.
+- **Manual monitoring:** Monitoring many candidates simultaneously is difficult.
+- **Slow evaluation:** Descriptive answer assessment requires time and consistent grading.
+- **Lack of transparency:** Examiners need clear evidence and understandable scoring.
 
-### Slide 3 – Our Solution
-ProctorEdge combines two assessment engines:
-1. Computer Vision Proctoring
-2. NLP-Based Answer Evaluation
+### Slide 3 – Our Unified Architecture
+ProctorEdge combines two coordinated engines:
 
-The platform aims to assist examiners by identifying suspicious patterns and evaluating answers against reference material.
+**1. Autonomous 10-Question Quiz Agent**
+- Generates a structured 10-question examination from supplied study material.
+- Supports objective and descriptive questions.
+- Collects candidate answers for automated assessment.
 
-### Slide 4 – System Architecture
-Candidate
-  |
-  v
-Browser-Based Examination
-  |
-  +---------------------------+
-  |                           |
-  v                           v
-Camera Monitoring       Answer Evaluation
-  |                           |
-  v                           v
-Face Mesh / Gaze          Reference Content
-Head Pose / Detection     Rubric-Based Grading
-  |                           |
-  v                           v
-Suspicious Event Flags    Answer Scores
-  |                           |
-  +-------------+-------------+
-                |
-                v
-       Combined Exam Report
+**2. Real-Time Proctoring Engine**
+- Uses MediaPipe Face Mesh for facial landmarks and monitoring indicators.
+- Uses YOLOv8-Nano for detecting additional people and mobile phones.
+- Processes sampled camera frames at approximately 3 FPS.
+- Combines suspicious indicators with temporal filtering.
 
-### Slide 5 – Computer Vision Proctoring
-- Webcam-based monitoring.
-- MediaPipe Face Mesh for facial landmarks and head-pose/gaze indicators.
-- YOLOv8-Nano for detecting phones and additional people.
-- Frame sampling at approximately 3 FPS.
-- Persistence filtering over 3 seconds (9 sampled frames).
-- Timestamped evidence snapshots for review.
+**Overall Workflow:**
+Candidate → Quiz → Answer Submission → Camera Monitoring → Answer Evaluation → Combined Exam Report.
 
-### Slide 6 – NLP-Based Assessment
-- Questions are grounded in supplied study material.
-- MCQs use deterministic answer-key evaluation.
-- Descriptive answers are evaluated against rubrics.
-- Concept coverage contributes to scoring.
-- Contradiction checks flag potentially incorrect claims.
-- Final feedback highlights strengths and improvement areas.
+### Slide 4 – Explainable 100-Point Trust Matrix
+**Goal:** Make suspicious-event scoring understandable and reviewable.
 
-### Slide 7 – Demo Dataset
-- Subject: Computer Networks.
-- Reference chapter: computer_networks_chapter.txt.
-- Sample answers: demo_script_answers.md.
-- Offline quiz: generated_quiz_10q.json.
-- Test cases: fully correct, partially correct, contradictory and insufficient answers.
+- Starts with a 100-point trust score.
+- Applies weighted deductions for configured suspicious indicators.
+- Uses a 3-second temporal persistence rule to filter brief events.
+- At approximately 3 FPS, this represents 9 sampled frames.
+- Maintains timestamped evidence snapshots for examiner review.
+- Provides an explainable record of detected events and score changes.
 
-### Slide 8 – Evaluation Harness Results
-- JavaScript evaluator: 4 out of 4 tests passed.
-- Python evaluator: 4 out of 4 tests passed.
-- Full-credit answer: 10/10 – GREEN.
-- Partial-credit answer: 6.7/10 – AMBER.
-- Contradictory answer: 0/10 – RED.
-- Insufficient answer: 0/10 – GRAY.
+**Important:** A low trust score or suspicious indicator is not automatic proof of cheating. Human review is essential.
 
-Note: These are controlled prototype test cases, not real-world accuracy measurements.
+### Slide 5 – Source-Grounded NLP Grading
+- Questions are generated from supplied study material.
+- MCQs are checked using deterministic answer keys.
+- Descriptive answers are evaluated against reference content and grading criteria.
+- Criterion-level partial credit recognises partially correct answers.
+- Contradiction checks flag potentially incorrect statements.
+- Feedback identifies strengths, missing concepts and areas for improvement.
 
-### Slide 9 – Trust and Evidence
-- Suspicious indicators should be reviewed, not treated as proof of cheating.
-- Persistence filtering helps reduce brief false alerts.
-- Timestamped snapshots provide supporting evidence.
-- Human review remains important before making disciplinary decisions.
+**Evaluation Demonstration:**
+- Fully correct answer: 10/10 – GREEN
+- Partially correct answer: 6.7/10 – AMBER
+- Contradictory answer: 0/10 – RED
+- Insufficient answer: 0/10 – GRAY
 
-### Slide 10 – Limitations and Future Scope
-Current prototype limitations:
-- Camera-based detection can produce false positives.
-- Gaze estimation is affected by lighting and camera placement.
-- Rule-based grading does not fully understand answer meaning.
-- NLI contradiction detection can make mistakes.
+**Competitive Positioning:** ProctorEdge aims to bring examination proctoring and explainable answer assessment into one workflow, complementing learning and assessment tools such as Khanmigo, Kahoot and Gradescope.
 
-Future improvements:
-- Stronger semantic answer evaluation.
+### Slide 6 – Production Roadmap
+**Planned Improvements:**
+- Fine-tuned DeBERTa-based graders for stronger semantic evaluation.
+- Lip-sync and audio checks for additional identity and activity indicators.
+- Iris-reading detection research to improve suspicious-behaviour analysis.
+- Teacher review queues for flagged events and disputed assessments.
 - Better calibration of detection thresholds.
-- Secure candidate and exam management.
+- Secure candidate and examination management.
 - Live dashboards and detailed reports.
-- Broader testing across devices and environments.
+- Broader testing across devices and examination environments.
 
-### Slide 11 – Conclusion
-ProctorEdge brings camera-based monitoring and automated answer assessment together in one proposed examination workflow.
+**Conclusion:** ProctorEdge proposes a unified, evidence-supported examination workflow that combines computer vision monitoring with automated answer assessment while keeping fairness and human review central.
 
-It aims to support more efficient assessments while keeping human review and fairness central.
-
-### Slide 12 – Thank You
-PROCTOREDGE
-Smarter Assessments. Better Insights.
+**PROCTOREDGE – Smarter Assessments. Better Insights.**

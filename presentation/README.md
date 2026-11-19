@@ -1,9 +1,9 @@
 # presentation/ — ProctorEdge Pitch Deck
 
 **Project:** ProctorEdge — Real-Time AI Anti-Cheat Camera Proctoring with Automated Exam Assessment  
-**Competition:** Factskoot Internship Campus Challenge 2026
+**Competition:** Factskoot Internship Campus Challenge 2026 (Live Campus Project & Computer Vision Track)  
 
-This folder contains the professional hackathon pitch presentation in editable PowerPoint format.
+This folder contains the official, professional 7-slide hackathon pitch presentation in editable Microsoft PowerPoint (`.pptx`) format.
 
 ---
 
@@ -11,170 +11,108 @@ This folder contains the professional hackathon pitch presentation in editable P
 
 ```
 presentation/
-├── ProctorEdge_Pitch_Deck.pptx    Editable 6-slide PowerPoint presentation
-├── build_pptx.js                  Source script used to generate the PPTX (Node.js + pptxgenjs)
-├── node_modules/                  pptxgenjs library (required only to rebuild)
-└── README.md                      This file
+├── ProctorEdge_Pitch_Deck.pptx         Editable 7-slide PowerPoint presentation (Redesigned & Verified)
+├── ProctorEdge_Pitch_Deck_backup.pptx  Original 6-slide presentation backup
+├── build_pptx.js                       Node.js builder script using pptxgenjs
+├── node_modules/                       pptxgenjs dependencies (excluded via .gitignore)
+└── README.md                           This documentation file
 ```
 
 ---
 
-## How to Open the Presentation
+## How to Open and Present the Deck
 
 ### Option 1 — Microsoft PowerPoint (Recommended)
 1. Double-click `ProctorEdge_Pitch_Deck.pptx`.
-2. It opens in Microsoft PowerPoint (Windows / Mac / Office 365).
-3. Use **Slide Show → From Beginning** (or press **F5**) to present.
-4. Speaker notes appear in the Notes panel at the bottom of each slide.
+2. It opens directly in Microsoft PowerPoint (Windows / macOS / Office 365).
+3. Press **F5** to start presentation mode from Slide 1.
+4. Press **Shift + F5** to enter **Presenter View** to see embedded speaker notes and timings.
 
 ### Option 2 — Google Slides
-1. Go to [slides.google.com](https://slides.google.com).
-2. Click **File → Import Slides** → Upload `ProctorEdge_Pitch_Deck.pptx`.
-3. Navigate through all 6 slides; formatting may differ slightly.
+1. Navigate to [slides.google.com](https://slides.google.com).
+2. Click **File** → **Import slides** → **Upload** `ProctorEdge_Pitch_Deck.pptx`.
+3. View all 7 slides with speaker notes.
 
-### Option 3 — LibreOffice Impress (Free)
-1. Download LibreOffice from [libreoffice.org](https://www.libreoffice.org).
-2. Open `ProctorEdge_Pitch_Deck.pptx` with LibreOffice Impress.
-3. Some gradient and shadow effects may render slightly differently.
+### Option 3 — LibreOffice Impress (Open Source)
+1. Open `ProctorEdge_Pitch_Deck.pptx` in LibreOffice Impress.
+2. Fully editable format.
 
 ---
 
 ## Presentation Overview
 
-### Theme & Design
-- **Background:** Dark navy (#0B1120)
-- **Accent colours:** Cyan (#00D9FF), Emerald (#10B981), Blue (#2563EB), Amber (#F59E0B), Rose (#F43F5E), Violet (#8B5CF6)
-- **Layout:** Widescreen 16:9 (13.33 × 7.5 inches)
-- **Typography:** System defaults (Inter-compatible)
-- Speaker notes included on every slide
+### Visual Theme & Aesthetics
+- **Canvas Layout:** Modern 16:9 widescreen (`13.33" × 7.5"`).
+- **Background:** Deep obsidian / cyber navy (`#060B14`).
+- **Accents:** Electric cyan (`#00E5FF`), high-tech blue (`#3B82F6`), AI purple (`#8B5CF6`), emerald green (`#10B981`), amber warning (`#F59E0B`), and rose alert (`#F43F5E`).
+- **Design Elements:** Glass-style card containers with subtle neon borders, circular score gauges, structured workflow chevron pipelines, and competitive comparison tables.
+- **Presenter Support:** Complete, natural speaker delivery notes embedded in every slide.
 
 ---
 
-## Slide-by-Slide Breakdown
+## Slide-by-Slide Detailed Breakdown
 
-### Slide 1 — Introduction
-**Purpose:** Hook the judges. Establish what ProctorEdge is and why it fits the Factskoot challenge.
+### Slide 1 — Title / Introduction
+- **Header:** `PROCTOREDGE`
+- **Subtitle:** `Real-Time AI Anti-Cheat Camera Proctoring with Automated Exam Assessment`
+- **Tagline:** *"Smarter Assessments. Better Insights."*
+- **Badge:** Factskoot Internship Campus Challenge 2026 · Computer Vision Track
+- **Showcase Cards:** Zero-Install Web Proctoring, Autonomous Exam Agent, Explainable Trust Matrix.
+- **Speaking Points:** High-level vision, solving campus assessment bottlenecks without invasive software.
 
-**Content:**
-- Title: ProctorEdge
-- Subtitle: Real-Time AI Anti-Cheat Camera Proctoring with Automated Exam Assessment
-- Tagline: *"Trust the Exam. Trust the Grade."*
-- Three value cards: Zero-Install WebApp · Dual-Engine Core · Factskoot Mandate Fit
+### Slide 2 — The Problem: Why Do Online Examinations Need Better Monitoring?
+- **Layout:** 5 distinct problem cards covering the examination integrity breakdown:
+  1. *False-Positive Alerts:* Natural blinks or brief glances trigger unfair disqualifications.
+  2. *Examination Loopholes:* Off-screen smartphones, extra people, and OBS virtual camera loops.
+  3. *Manual Monitoring Overload:* Human proctor cognitive fatigue watching dozens of video tiles.
+  4. *Time-Consuming Descriptive Evaluation:* Weeks of manual faculty grading; unconstrained LLM hallucinations.
+  5. *Lack of Explainable Evidence:* Black-box scores without verifiable audit ledgers.
 
-**Accent colour:** Emerald  
-**Delivery time:** ~30 seconds
+### Slide 3 — Unified System Architecture: One Platform. Two Intelligent Engines.
+- **Top Section:** Dual-Engine side-by-side architecture:
+  - *Engine 1 (Autonomous Quiz Agent):* Syllabus ingestion, 10-question synthesis (7 MCQs + 3 Short-Answer), rubric generation.
+  - *Engine 2 (Real-Time AI Proctoring):* MediaPipe Face Mesh (468 landmarks), YOLOv8-Nano device detection, Web Worker 3 FPS throttling, 3s temporal persistence.
+- **Bottom Section:** 6-Step Unified Exam Workflow Pipeline:
+  `Candidate` ➔ `Browser Exam` ➔ `Dual Engines` ➔ `Evaluation & Event Analysis` ➔ `Twin Scores` ➔ `Final Report`.
 
----
+### Slide 4 — Explainable 100-Point Trust Matrix: Trust Through Explainable Evidence
+- **Left Panel:** Circular 100-point starting score visual gauge and illustrative deduction framework (-20 phone, -15 multi-face, -10 absence, -5 gaze deviation).
+- **Right Panel:**
+  - *3-Second Temporal Persistence Rule:* 9 consecutive sampled frames at ~3 FPS required before triggering deductions.
+  - *Audit-Ready Evidence Ledger:* Timestamped snapshots for educator dispute resolution.
+  - *Core Principle:* Suspicious events are screening indicators for human review, never automated proof of cheating.
 
-### Slide 2 — The Problem
-**Purpose:** Establish the pain points that ProctorEdge solves.
+### Slide 5 — Source-Grounded NLP Answer Evaluation: Beyond Right or Wrong
+- **Left Panel:** Four demonstration result cards matching verified JavaScript test suite outputs:
+  1. *Fully Correct (10/10 - GREEN):* Complete conceptual & mechanism coverage.
+  2. *Partially Correct (6.7/10 - AMBER):* Transparent partial credit for omitted handshake/ACKs.
+  3. *Contradictory (0/10 - RED):* Factual inversion caught against chapter source.
+  4. *Insufficient (0/10 - GRAY):* Lexical density gate stops low-effort responses (<35 words).
+- **Right Panel:** Competitive positioning matrix comparing ProctorEdge with Gradescope, Khanmigo, and Kahoot!.
+- **Focus Statement:** ProctorEdge's unique value in unifying edge proctoring with explainable rubric evaluation in a single workflow.
 
-**Content:**
-- Three-column problem cards:
-  - 01 · False-Positive Panic (legacy proctoring tools)
-  - 02 · Modern Hardware Exploits (phones, virtual cameras)
-  - 03 · The Grading Bottleneck (MCQs, faculty time, hallucinating LLMs)
+### Slide 6 — Technology Stack, Current Limitations & Production Roadmap
+- **3 Distinct Columns:**
+  - *Technology Stack (Implemented Prototype):* MediaPipe Face Mesh, YOLOv8-Nano, HTML5 Canvas, Web Workers, source-grounded rubrics.
+  - *Current Limitations (Honest Disclosures):* Lighting/angles, CV edge-case false positives, lexical vs semantic grading bounds, human-in-the-loop mandate.
+  - *Future Roadmap (60–120 Days):* Fine-tuned DeBERTa semantic grading, acoustic/lip-sync verification, iris saccade tracking, teacher review queues, LTI 1.3 Canvas/Moodle integration.
 
-**Accent colour:** Rose  
-**Delivery time:** ~45 seconds
-
----
-
-### Slide 3 — Unified Architecture
-**Purpose:** Explain the technical dual-engine pipeline clearly.
-
-**Content:**
-- Left panel: Autonomous Quiz Generation Agent (chapter → 10-question exam)
-- Right panel: 3 FPS Throttled Edge Vision Engine (MediaPipe + YOLOv8-Nano)
-- Pipeline flow bar: document → quiz agent → rubric model | webcam → 3 FPS worker → temporal filter → trust ledger
-
-**Accent colour:** Cyan  
-**Delivery time:** ~45 seconds
-
----
-
-### Slide 4 — Explainable 100-Point Trust Matrix
-**Purpose:** Show the proctoring fairness system with transparent scoring.
-
-**Content:**
-- Trust Score visualisation (starts at 100)
-- 3-Second Temporal Persistence Rule explanation
-- Illustrative deduction examples (phone: −20, multiple faces: −15, absence: −10, gaze: −5)
-- Audit-ready evidence ledger description
-- ⚠ Disclosure: deduction weights are illustrative examples
-
-**Accent colour:** Amber  
-**Delivery time:** ~45 seconds
+### Slide 7 — Thank You!
+- **Visual Design:** Grand glass-morphic celebration frame with cyber blue/purple glowing accents.
+- **Content:** Warm appreciation to the judges, project branding recap, key architectural pillars, 4-member team recognition, and open floor for Q&A discussion.
 
 ---
 
-### Slide 5 — Source-Grounded NLP Grading
-**Purpose:** Demonstrate the academic grading engine and four demo answer categories.
+## Rebuilding the Presentation from Source
 
-**Content:**
-- 3-step grading flow: MCQ Gate → Rubric Decomposer → Contradiction Detector
-- Four demo answer result badges (actual verified scores)
-- Feature comparison table: ProctorEdge vs Gradescope vs Khanmigo vs Kahoot!
-- ⚠ Disclosure: offline evaluator uses keyword matching / regex, not full semantic AI
+The presentation is fully automated and reproducible using Node.js:
 
-**Accent colour:** Violet  
-**Delivery time:** ~45 seconds
+```powershell
+cd presentation
+node build_pptx.js
+```
 
----
-
-### Slide 6 — Production Roadmap
-**Purpose:** Show a credible path from prototype to production.
-
-**Content:**
-- Phase 1 (60 Days): Deep Vision Hardening — local NLP grading model, VAD + lip-sync, replay detection
-- Phase 2 (90 Days): Behavioural Biometrics — iris saccade tracking, dual-camera QR pairing, teacher review queue
-- Phase 3 (120 Days): LTI 1.3 LMS Integration — Canvas, Moodle, Blackboard, scalable deployment
-- ⚠ Footer disclaimer: all items are planned future improvements
-
-**Accent colour:** Blue  
-**Delivery time:** ~30 seconds
-
----
-
-## Speaker Notes
-
-Each slide includes a speaker script in the PowerPoint Notes panel. To view them:
-- **PowerPoint:** View → Notes Page, or the Notes panel at the bottom of the editor.
-- **During presentation:** Use Presenter View (Slide Show → Presenter View).
-
----
-
-## Rebuilding the PPTX
-
-If you need to modify and regenerate the PPTX from source:
-
-1. Ensure Node.js is installed (`node --version`).
-2. The `node_modules/pptxgenjs` library is already installed in this folder.
-3. Edit `build_pptx.js` as needed.
-4. Run:
-   ```bash
-   cd presentation/
-   node build_pptx.js
-   ```
-5. The updated `ProctorEdge_Pitch_Deck.pptx` is overwritten in place.
-
----
-
-## Important Disclosures
-
-The presentation is accurate about what is currently implemented vs. planned:
-
-| Feature | Status |
-|---------|--------|
-| Browser-based quiz with 10 questions | ✅ Implemented (demo-data) |
-| MediaPipe face mesh proctoring | ✅ Implemented in app |
-| YOLOv8-Nano phone/person detection | ✅ Implemented in app |
-| 3 FPS Web Worker throttling | ✅ Implemented in app |
-| 3-second temporal persistence rule | ✅ Implemented in app |
-| Keyword/rubric short-answer grading | ✅ Implemented (offline evaluator) |
-| Full semantic NLI transformer grading | 🔵 Planned (Phase 1) |
-| Iris saccade biometric tracking | 🔵 Planned (Phase 2) |
-| LTI 1.3 LMS integration | 🔵 Planned (Phase 3) |
+Upon execution, `ProctorEdge_Pitch_Deck.pptx` will be regenerated with all 7 widescreen slides and embedded speaker notes.
 
 ---
 
