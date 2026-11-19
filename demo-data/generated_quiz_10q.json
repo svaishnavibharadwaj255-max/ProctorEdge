@@ -1,0 +1,143 @@
+
+{
+  "quiz_id": "proctoredge_cn_demo_01",
+  "subject": "Computer Networks",
+  "source_file": "computer_networks_chapter.txt",
+  "total_questions": 10,
+  "questions": [
+    {
+      "id": 1,
+      "type": "mcq",
+      "topic": "OSI Model",
+      "question": "How many layers are present in the OSI model?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "7",
+        "D": "8"
+      },
+      "correct_answer": "C",
+      "marks": 1
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "topic": "Transport Layer",
+      "question": "Which protocol provides reliable, connection-oriented communication?",
+      "options": {
+        "A": "UDP",
+        "B": "TCP",
+        "C": "IP",
+        "D": "DNS"
+      },
+      "correct_answer": "B",
+      "marks": 1
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "topic": "UDP",
+      "question": "Which protocol is connectionless?",
+      "options": {
+        "A": "TCP",
+        "B": "HTTP",
+        "C": "UDP",
+        "D": "FTP"
+      },
+      "correct_answer": "C",
+      "marks": 1
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "topic": "TCP",
+      "question": "What is the first step in the TCP three-way handshake?",
+      "options": {
+        "A": "ACK",
+        "B": "SYN",
+        "C": "FIN",
+        "D": "RST"
+      },
+      "correct_answer": "B",
+      "marks": 1
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "topic": "IP Addressing",
+      "question": "Which IP version uses 128-bit addresses?",
+      "options": {
+        "A": "IPv4",
+        "B": "IPv5",
+        "C": "IPv6",
+        "D": "IPv2"
+      },
+      "correct_answer": "C",
+      "marks": 1
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "topic": "DNS",
+      "question": "What is the primary purpose of DNS?",
+      "options": {
+        "A": "Encrypting data",
+        "B": "Translating domain names into IP addresses",
+        "C": "Detecting viruses",
+        "D": "Transferring files"
+      },
+      "correct_answer": "B",
+      "marks": 1
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "topic": "IP Header",
+      "question": "What does the TTL field help prevent?",
+      "options": {
+        "A": "Data encryption",
+        "B": "Packets circulating indefinitely",
+        "C": "Password attacks",
+        "D": "DNS caching"
+      },
+      "correct_answer": "B",
+      "marks": 1
+    },
+    {
+      "id": 8,
+      "type": "short_answer",
+      "topic": "TCP",
+      "question": "Explain the TCP three-way handshake.",
+      "marks": 3,
+      "rubric": [
+        "Client sends SYN",
+        "Server responds with SYN-ACK",
+        "Client sends ACK to establish the connection"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "short_answer",
+      "topic": "TCP vs UDP",
+      "question": "Differentiate between TCP and UDP.",
+      "marks": 3,
+      "rubric": [
+        "TCP is connection-oriented while UDP is connectionless",
+        "TCP provides reliable delivery while UDP does not guarantee delivery",
+        "TCP has more overhead while UDP is generally faster and lightweight"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "short_answer",
+      "topic": "DNS",
+      "question": "Explain how DNS resolves a domain name.",
+      "marks": 3,
+      "rubric": [
+        "A client requests the IP address of a domain",
+        "A DNS resolver queries DNS servers or uses its cache",
+        "The resolved IP address is returned to the client"
+      ]
+    }
+  ]
+}

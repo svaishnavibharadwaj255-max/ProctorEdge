@@ -1,0 +1,163 @@
+
+COMPUTER NETWORKS – REFERENCE KNOWLEDGE CHAPTER
+================================================
+
+1. OSI 7-LAYER MODEL
+
+The Open Systems Interconnection (OSI) model is a conceptual framework that explains how data travels between devices over a network. It consists of seven layers.
+
+Layer 7 – Application Layer:
+Provides network services directly to user applications. Examples include HTTP, FTP, SMTP and DNS.
+
+Layer 6 – Presentation Layer:
+Handles data translation, encryption, decryption and compression. It ensures that data is represented in a format understood by communicating systems.
+
+Layer 5 – Session Layer:
+Establishes, manages and terminates communication sessions between applications.
+
+Layer 4 – Transport Layer:
+Provides process-to-process communication. It uses port numbers to identify applications and supports protocols such as TCP and UDP.
+
+Layer 3 – Network Layer:
+Handles logical addressing and routing. It forwards packets between different networks using IP addresses.
+
+Layer 2 – Data Link Layer:
+Provides node-to-node delivery using frames and MAC addresses. It performs error detection and media access control.
+
+Layer 1 – Physical Layer:
+Transmits raw bits through physical media such as cables, radio waves and optical fibre.
+
+During encapsulation, each layer adds its own control information to the data before transmission. At the receiving device, decapsulation removes these headers in reverse order to recover the original data.
+
+
+2. NETWORK LAYER – IPv4 AND IPv6
+
+The Network Layer is responsible for logical addressing, routing and packet forwarding between networks.
+
+IPv4:
+- Uses a 32-bit address.
+- Provides approximately 4.3 billion unique address combinations.
+- Example: 192.168.1.10.
+- Uses a Time To Live (TTL) field to limit packet lifetime.
+
+IPv6:
+- Uses a 128-bit address.
+- Provides a significantly larger address space.
+- Example: 2001:db8::1.
+- Uses a Hop Limit field instead of IPv4 TTL.
+
+CIDR (Classless Inter-Domain Routing):
+CIDR represents network prefixes using slash notation. For example, 192.168.1.0/24 means that the first 24 bits represent the network prefix.
+
+Packet Forwarding:
+Routers examine the destination IP address of an incoming packet and consult their routing tables to select the appropriate next hop or outgoing interface.
+
+TTL and Routing Loops:
+In IPv4, routers decrement the TTL value when forwarding packets. When it reaches zero, the packet is discarded. IPv6 uses a similar Hop Limit mechanism. These mechanisms help prevent packets from circulating indefinitely in routing loops.
+
+
+3. TRANSPORT LAYER – TCP AND UDP
+
+The Transport Layer provides process-to-process communication between applications running on different devices.
+
+Port Numbers:
+TCP and UDP use 16-bit port numbers to identify application processes. Port numbers range from 0 to 65535.
+
+TCP – TRANSMISSION CONTROL PROTOCOL
+
+TCP is a connection-oriented transport protocol that provides reliable and ordered data delivery.
+
+Connection Establishment:
+TCP establishes a connection using a three-way handshake:
+
+1. SYN: The client sends a synchronization request.
+2. SYN-ACK: The server acknowledges the request and sends its own synchronization response.
+3. ACK: The client acknowledges the server's response.
+
+After this handshake, data transmission can begin.
+
+Reliability Mechanisms:
+- Sequence numbers identify the position of transmitted bytes.
+- Acknowledgements (ACKs) confirm successful receipt of data.
+- Retransmissions recover lost segments.
+- Sliding window mechanisms control how much data can be sent before acknowledgements are received.
+- Congestion control mechanisms help prevent excessive network traffic.
+
+TCP Header:
+The minimum TCP header size is 20 bytes, without optional fields.
+
+Use Cases:
+TCP is suitable for applications requiring reliable and ordered delivery, such as web browsing, file transfers and email.
+
+
+UDP – USER DATAGRAM PROTOCOL
+
+UDP is a connectionless transport protocol that sends independent datagrams without establishing a connection.
+
+Characteristics:
+- Does not require a connection handshake.
+- Does not guarantee delivery.
+- Does not provide built-in retransmission of lost datagrams.
+- Does not guarantee packet ordering.
+- Has lower protocol overhead than TCP.
+- Provides a minimum header size of 8 bytes.
+
+Use Cases:
+UDP is useful for applications where low latency is important, such as online gaming, voice over IP (VoIP), live streaming and DNS queries.
+
+TCP AND UDP COMPARISON:
+
+TCP:
+- Connection-oriented.
+- Reliable delivery.
+- Uses acknowledgements and retransmissions.
+- Maintains ordered delivery.
+- Minimum header: 20 bytes.
+
+UDP:
+- Connectionless.
+- Delivery is not guaranteed.
+- No built-in retransmission.
+- No guaranteed ordering.
+- Header: 8 bytes.
+
+
+4. DOMAIN NAME SYSTEM (DNS)
+
+The Domain Name System translates human-readable domain names into IP addresses so that devices can locate services on the internet.
+
+DNS Resolution Process:
+
+1. A client requests the IP address of a domain name.
+2. A recursive resolver receives the request.
+3. If the answer is not cached, the resolver queries a Root Nameserver.
+4. The Root Nameserver directs the resolver to the appropriate Top-Level Domain (TLD) server.
+5. The TLD server directs the resolver to the authoritative nameserver.
+6. The authoritative nameserver provides the requested DNS record.
+7. The resolver returns the result to the client and may cache it.
+
+DNS Record Types:
+
+A Record:
+Maps a domain name to an IPv4 address.
+
+AAAA Record:
+Maps a domain name to an IPv6 address.
+
+CNAME Record:
+Creates an alias from one domain name to another canonical domain name.
+
+MX Record:
+Specifies the mail servers responsible for receiving email for a domain.
+
+TTL (Time To Live):
+Specifies how long a DNS record can remain in a cache before it should be refreshed.
+
+DNS caching reduces repeated queries and improves resolution efficiency.
+
+
+5. SUMMARY
+
+The OSI model explains network communication through seven layers. The Network Layer handles IP addressing and packet forwarding. The Transport Layer provides process-to-process delivery through TCP and UDP. TCP prioritizes reliable and ordered delivery, whereas UDP provides connectionless communication with lower overhead. DNS translates domain names into IP addresses using a hierarchical resolution process.
+
+This chapter serves as the reference knowledge source for ProctorEdge's automated quiz generation and answer evaluation system.

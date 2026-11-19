@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProctorEdge | Project Presentation</title>
+<style>
+:root {
+  --bg: #07111f;
+  --panel: #101f33;
+  --blue: #48a9ff;
+  --cyan: #49e0df;
+  --text: #f3f7ff;
+  --muted: #a9b8cc;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  overflow: hidden;
+}
+.slide {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  padding: 7vh 9vw 90px;
+  animation: appear .35s ease;
+}
+.slide.active { display: flex; flex-direction: column; }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.eyebrow {
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+h1 { font-size: clamp(48px, 8vw, 92px); margin: 0; line-height: 1.05; }
+h2 { font-size: clamp(32px, 4vw, 52px); margin: 0 0 24px; }
+h3 { color: var(--cyan); margin-top: 0; }
+p, li { color: var(--muted); font-size: clamp(16px, 1.5vw, 21px); line-height: 1.6; }
+.subtitle { font-size: clamp(20px, 2.5vw, 30px); max-width: 750px; }
+.accent { color: var(--blue); }
+.cyan { color: var(--cyan); }
+.tag {
+  display: inline-block;
+  border: 1px solid #315477;
+  color: #b9dcff;
+  padding: 9px 15px;
+  border-radius: 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.card {
+  background: linear-gradient(145deg, #142941, #0e1b2c);
+  border: 1px solid #243c56;
+  border-radius: 18px;
+  padding: 24px;
+}
+.card p { margin-bottom: 0; }
+.card h3 { font-size: 21px; }
+.big-number { font-size: 48px; font-weight: 800; color: var(--cyan); }
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.flow div {
+  background: #142941;
+  border: 1px solid #315477;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  min-width: 130px;
+  color: var(--text);
+}
+.arrow { color: var(--cyan); font-size: 25px; }
+ul { padding-left: 24px; }
+li { margin-bottom: 9px; }
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 17px 5vw;
+  background: rgba(5, 13, 24, .94);
+  border-top: 1px solid #24374d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+.controls { display: flex; gap: 10px; align-items: center; }
+button {
+  background: #173858;
+  border: 1px solid #3d79a8;
+  color: white;
+  border-radius: 9px;
+  padding: 10px 17px;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover { background: #24639a; }
+#progress {
+  height: 3px;
+  background: #1d344b;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 10;
+}
+#bar { height: 100%; width: 8.33%; background: var(--cyan); transition: width .25s; }
+.small { font-size: 14px; color: #8299b2; }
+.center { justify-content: center; }
+.center-content { text-align: center; align-items: center; }
+.center-content p { max-width: 760px; }
+.pill {
+  display: inline-block;
+  background: #173b50;
+  color: var(--cyan);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+@media(max-width: 700px) {
+  .slide { padding: 6vh 6vw 100px; overflow-y: auto; }
+  .grid { grid-template-columns: 1fr; }
+  .footer { padding: 12px 4vw; }
+  .flow { flex-direction: column; }
+  .arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"><div id="bar"></div></div>
+
+<!-- SLIDE 1 -->
+<section class="slide active center center-content">
+  <div class="eyebrow">AI-powered examination support</div>
+  <h1><span class="accent">PROCTOR</span><span class="cyan">EDGE</span></h1>
+  <p class="subtitle">Real-Time AI Anti-Cheat Camera Proctoring with Automated Exam Assessment</p>
+  <div style="margin:25px">
+    <span class="tag">Computer Vision</span>
+    <span class="tag">NLP Assessment</span>
+    <span class="tag">Evidence-Based Review</span>
+  </div>
+  <p class="small">Factskoot Internship Campus Challenge 2026</p>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide">
+  <div class="eyebrow">01 / The challenge</div>
+  <h2>The Problem</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Online Exam Monitoring</h3>
+      <p>Remote examinations can make it difficult to observe suspicious activities consistently.</p>
+    </div>
+    <div class="card">
+      <h3>Manual Evaluation</h3>
+      <p>Reviewing descriptive answers manually takes time and effort.</p>
+    </div>
+    <div class="card">
+      <h3>Limited Evidence</h3>
+      <p>Examiners need timestamped information to review unusual events.</p>
+    </div>
+    <div class="card">
+      <h3>Assessment Consistency</h3>
+      <p>Answer evaluation should follow clear reference material and scoring criteria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide">
+  <div class="eyebrow">02 / Our approach</div>
+  <h2>Introducing <span class="accent">ProctorEdge</span></h2>
+  <p class="subtitle">One proposed workflow combining two assessment engines.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>01 — Computer Vision</h3>
+      <p>Analyses sampled webcam frames for facial direction indicators and possible prohibited objects or additional people.</p>
+      <span class="tag">MediaPipe</span><span class="tag">YOLOv8-Nano</span>
+    </div>
+    <div class="card">
+      <h3>02 — NLP Assessment</h3>
+      <p>Evaluates descriptive answers against reference material and rubrics, with checks for contradictory claims.</p>
+      <span class="tag">Rubric scoring</span><span class="tag">NLI concept</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide">
+  <div class="eyebrow">03 / Architecture</div>
+  <h2>System Architecture</h2>
+  <div class="flow">
+    <div>Candidate</div><span class="arrow">→</span>
+    <div>Browser Exam</div><span class="arrow">→</span>
+    <div>Assessment Engines</div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Camera Monitoring Pipeline</h3>
+      <div class="flow">
+        <div>Webcam Frames</div><span class="arrow">→</span>
+        <div>CV Analysis</div><span class="arrow">→</span>
+        <div>Event Flags</div>
+      </div>
+      <p>Detection indicators and timestamped evidence are prepared for review.</p>
+    </div>
+    <div class="card">
+      <h3>Answer Evaluation Pipeline</h3>
+      <div class="flow">
+        <div>Answer</div><span class="arrow">→</span>
+        <div>Rubric</div><span class="arrow">→</span>
+        <div>Score</div>
+      </div>
+      <p>Answers are compared with reference concepts and scoring criteria.</p>
+    </div>
+  </div>
+  <p class="small">Conceptual architecture of the proposed system workflow.</p>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide">
+  <div class="eyebrow">04 / Computer vision</div>
+  <h2>Camera-Based Proctoring</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>MediaPipe Face Mesh</h3>
+      <p>Uses facial landmarks to estimate head pose and gaze-related indicators.</p>
+    </div>
+    <div class="card">
+      <h3>YOLOv8-Nano</h3>
+      <p>Used for detecting objects such as phones and identifying additional people.</p>
+    </div>
+    <div class="card">
+      <h3>Frame Sampling</h3>
+      <div class="big-number">3 FPS</div>
+      <p>Approximately three sampled frames per second in the proposed pipeline.</p>
+    </div>
+    <div class="card">
+      <h3>Persistence Filter</h3>
+      <div class="big-number">3 sec</div>
+      <p>A 9-sampled-frame persistence rule helps filter brief detections.</p>
+    </div>
+  </div>
+  <p class="small">Detection signals are indicators for human review, not proof of misconduct.</p>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide">
+  <div class="eyebrow">05 / Answer assessment</div>
+  <h2>NLP-Based Evaluation</h2>
+  <div class="flow">
+    <div>Candidate Answer</div><span class="arrow">→</span>
+    <div>Reference Material</div><span class="arrow">→</span>
+    <div>Rubric Checks</div><span class="arrow">→</span>
+    <div>Score & Feedback</div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>MCQ Evaluation</h3>
+      <p>Objective questions are checked against a predefined answer key.</p>
+    </div>
+    <div class="card">
+      <h3>Descriptive Evaluation</h3>
+      <p>Sample prototype scoring checks answer length, recognised concepts and contradiction patterns.</p>
+    </div>
+  </div>
+  <p class="small">The current demo harness uses simplified rule-based checks. It is not a full semantic AI grading model.</p>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide">
+  <div class="eyebrow">06 / Demo dataset</div>
+  <h2>Computer Networks Dataset</h2>
+  <p>Our demonstration uses a prepared reference chapter and sample candidate responses.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="big-number">10</div>
+      <h3>Quiz Questions</h3>
+      <p>7 multiple-choice and 3 short-answer questions.</p>
+    </div>
+    <div class="card">
+      <div class="big-number">4</div>
+      <h3>Sample Answers</h3>
+      <p>Fully correct, partially correct, contradictory and insufficient responses.</p>
+    </div>
+  </div>
+  <p>Topics include OSI layers, TCP, UDP, IP addressing, TTL and DNS.</p>
+  <p class="small">Offline demonstration dataset — not dynamically generated by an AI model.</p>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="slide">
+  <div class="eyebrow">07 / Prototype validation</div>
+  <h2>Evaluation Harness Results</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>JavaScript Evaluator</h3>
+      <div class="big-number">4/4</div>
+      <p>Controlled test cases passed.</p>
+    </div>
+    <div class="card">
+      <h3>Python Evaluator</h3>
+      <div class="big-number">4/4</div>
+      <p>Controlled test cases passed.</p>
+    </div>
+  </div>
+  <div class="flow">
+    <div><span class="cyan">GREEN</span><br>10/10<br><span class="small">Full credit</span></div>
+    <div><span style="color:#ffc66d">AMBER</span><br>6.7/10<br><span class="small">Partial credit</span></div>
+    <div><span style="color:#ff7777">RED</span><br>0/10<br><span class="small">Contradiction</span></div>
+    <div><span style="color:#b7c1d1">GRAY</span><br>0/10<br><span class="small">Insufficient</span></div>
+  </div>
+  <p class="small">These results validate four designed test cases only. They do not represent real-world grading accuracy.</p>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="slide">
+  <div class="eyebrow">08 / Trust and evidence</div>
+  <h2>Designed for Responsible Review</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Timestamped Evidence</h3>
+      <p>Snapshots can help examiners review when a flagged event occurred.</p>
+    </div>
+    <div class="card">
+      <h3>Persistence Filtering</h3>
+      <p>Repeated detections can reduce alerts caused by very brief events.</p>
+    </div>
+    <div class="card">
+      <h3>Human Oversight</h3>
+      <p>Automated indicators should support decisions, not replace examiner judgement.</p>
+    </div>
+    <div class="card">
+      <h3>Fairness</h3>
+      <p>Lighting, camera placement and individual behaviour can affect detection results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide">
+  <div class="eyebrow">09 / Current limitations</div>
+  <h2>What We Need to Improve</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Vision Limitations</h3>
+      <ul>
+        <li>False-positive detections</li>
+        <li>Lighting and camera variations</li>
+        <li>Gaze estimation uncertainty</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Assessment Limitations</h3>
+      <ul>
+        <li>Rule-based scoring is limited</li>
+        <li>Keyword checks can miss meaning</li>
+        <li>Contradiction checks can make mistakes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 -->
+<section class="slide">
+  <div class="eyebrow">10 / Future scope</div>
+  <h2>Where ProctorEdge Can Go</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Better Semantic Grading</h3>
+      <p>Integrate stronger language models and validated NLI checks.</p>
+    </div>
+    <div class="card">
+      <h3>Improved Detection</h3>
+      <p>Test and calibrate models across diverse devices and environments.</p>
+    </div>
+    <div class="card">
+      <h3>Exam Management</h3>
+      <p>Add secure candidate registration and examination workflows.</p>
+    </div>
+    <div class="card">
+      <h3>Reporting Dashboard</h3>
+      <p>Provide detailed scores, evidence timelines and examiner feedback.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 -->
+<section class="slide center center-content">
+  <div class="eyebrow">Thank you</div>
+  <h1><span class="accent">PROCTOR</span><span class="cyan">EDGE</span></h1>
+  <h2 style="margin-top:25px">Smarter Assessments. Better Insights.</h2>
+  <p>Combining computer vision and answer evaluation to support responsible online examinations.</p>
+  <span class="pill">Questions & Discussion</span>
+</section>
+
+<div class="footer">
+  <div class="small">PROCTOREDGE · PROJECT PRESENTATION</div>
+  <div class="controls">
+    <button onclick="previousSlide()">← Previous</button>
+    <span id="counter" class="small">1 / 12</span>
+    <button onclick="nextSlide()">Next →</button>
+  </div>
+</div>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+let current = 0;
+
+function showSlide(index) {
+  current = Math.max(0, Math.min(index, slides.length - 1));
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === current);
+  });
+  document.getElementById("counter").textContent =
+    (current + 1) + " / " + slides.length;
+  document.getElementById("bar").style.width =
+    ((current + 1) / slides.length * 100) + "%";
+}
+
+function nextSlide() {
+  if (current < slides.length - 1) showSlide(current + 1);
+}
+
+function previousSlide() {
+  if (current > 0) showSlide(current - 1);
+}
+
+document.addEventListener("keydown", event => {
+  if (event.key === "ArrowRight" || event.key === " ") nextSlide();
+  if (event.key === "ArrowLeft") previousSlide();
+});
+
+showSlide(0);
+</script>
+</body>
+</html>

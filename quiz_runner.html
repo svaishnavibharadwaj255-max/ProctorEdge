@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProctorEdge | Candidate Examination</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #07111f;
+  color: #f3f7ff;
+}
+
+header {
+  padding: 25px 7%;
+  background: #101f33;
+  border-bottom: 1px solid #29415d;
+}
+
+header h1 {
+  margin: 0;
+  color: #49c7ff;
+}
+
+header p {
+  color: #a9b8cc;
+}
+
+main {
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.panel, .question {
+  background: #102239;
+  border: 1px solid #29415d;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+button, input[type="file"] {
+  margin-top: 12px;
+}
+
+button {
+  background: #168bd1;
+  color: white;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #0872b4;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.question h3 {
+  color: #65d5ff;
+}
+
+.option {
+  display: block;
+  padding: 10px;
+  margin: 8px 0;
+  background: #172e48;
+  border-radius: 8px;
+  color: #dceaff;
+}
+
+textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #45617e;
+  background: #091727;
+  color: white;
+  resize: vertical;
+  font: inherit;
+}
+
+#examArea, #resultArea {
+  display: none;
+}
+
+#resultArea {
+  border: 1px solid #49c7ff;
+  padding: 25px;
+  border-radius: 14px;
+  background: #102b3e;
+}
+
+.muted {
+  color: #a9b8cc;
+}
+
+#progress {
+  color: #49d8d0;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  color: #71869f;
+  padding: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>PROCTOREDGE</h1>
+  <p>Candidate Examination Portal | Computer Networks</p>
+</header>
+
+<main>
+
+  <section class="panel" id="loader">
+    <h2>Load Examination Dataset</h2>
+    <p class="muted">
+      Select the generated_quiz_10q.json file from your demo-data folder.
+    </p>
+
+    <input type="file" id="quizFile" accept=".json,application/json">
+    <br>
+    <button onclick="loadQuiz()">Load Quiz</button>
+    <p id="loadMessage" class="muted"></p>
+  </section>
+
+  <section id="examArea">
+    <div class="panel">
+      <h2 id="examTitle">Computer Networks Examination</h2>
+      <p id="examSubject" class="muted"></p>
+      <p id="progress"></p>
+      <p class="muted">
+        Answer the questions and submit when you are finished.
+      </p>
+    </div>
+
+    <div id="questionContainer"></div>
+
+    <button id="submitButton" onclick="submitExam()">
+      Submit Examination
+    </button>
+  </section>
+
+  <section id="resultArea">
+    <h2>Examination Result</h2>
+    <h1 id="score"></h1>
+    <h2 id="percentage"></h2>
+    <p id="answered"></p>
+    <div id="feedback"></div>
+    <button onclick="location.reload()">Take Another Attempt</button>
+  </section>
+
+</main>
+
+<footer>
+  ProctorEdge | Smarter Assessments. Better Insights.
+</footer>
+
+<script>
+let quizData = null;
+let submitted = false;
+
+function loadQuiz() {
+  const fileInput = document.getElementById("quizFile");
+  const message = document.getElementById("loadMessage");
+
+  if (!fileInput.files.length) {
+    message.textContent = "Please select the JSON quiz file first.";
+    return;
+  }
+
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+    try {
+      const data = JSON.parse(event.target.result);
+
+      if (!Array.isArray(data.questions) || data.questions.length === 0) {
+        throw new Error("The quiz has no valid questions.");
+      }
+
+      quizData = data;
+      displayQuiz();
+
+      message.textContent = "Quiz loaded successfully!";
+    } catch (error) {
+      message.textContent = "Unable to load quiz: " + error.message;
+    }
+  };
+
+  reader.onerror = function() {
+    message.textContent = "Could not read the selected file.";
+  };
+
+  reader.readAsText(file);
+}
+
+function displayQuiz() {
+  const container = document.getElementById("questionContainer");
+  container.innerHTML = "";
+
+  document.getElementById("examTitle").textContent =
+    quizData.quiz_id || "Computer Networks Examination";
+
+  document.getElementById("examSubject").textContent =
+    "Subject: " + (quizData.subject || "Computer Networks");
+
+  quizData.questions.forEach((question, index) => {
+    const card = document.createElement("div");
+    card.className = "question";
+
+    const heading = document.createElement("h3");
+    heading.textContent =
+      "Question " + (index + 1) + " (" + question.marks + " marks)";
+
+    const prompt = document.createElement("p");
+    prompt.textContent = question.question;
+
+    card.appendChild(heading);
+    card.appendChild(prompt);
+
+    if (question.type === "mcq") {
+      Object.entries(question.options).forEach(([key, value]) => {
+        const label = document.createElement("label");
+        label.className = "option";
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "question_" + question.id;
+        radio.value = key;
+
+        label.appendChild(radio);
+        label.appendChild(
+          document.createTextNode(" " + key + ". " + value)
+        );
+
+        card.appendChild(label);
+      });
+    } else if (question.type === "short_answer") {
+      const textarea = document.createElement("textarea");
+      textarea.id = "answer_" + question.id;
+      textarea.placeholder = "Write your answer here...";
+      card.appendChild(textarea);
+    }
+
+    container.appendChild(card);
+  });
+
+  document.getElementById("progress").textContent =
+    quizData.questions.length + " questions loaded";
+
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("examArea").style.display = "block";
+}
+
+function submitExam() {
+  if (!quizData || submitted) return;
+
+  const unanswered = [];
+  let earnedMarks = 0;
+  let totalMarks = 0;
+  let answeredCount = 0;
+  const feedback = [];
+
+  quizData.questions.forEach((question, index) => {
+    totalMarks += Number(question.marks) || 0;
+
+    if (question.type === "mcq") {
+      const selected = document.querySelector(
+        'input[name="question_' + question.id + '"]:checked'
+      );
+
+      if (!selected) {
+        unanswered.push(index + 1);
+        feedback.push("Question " + (index + 1) + ": Not answered");
+        return;
+      }
+
+      answeredCount++;
+
+      if (selected.value === question.correct_answer) {
+        earnedMarks += Number(question.marks);
+        feedback.push("Question " + (index + 1) + ": Correct");
+      } else {
+        feedback.push(
+          "Question " + (index + 1) +
+          ": Incorrect. Correct answer: " + question.correct_answer
+        );
+      }
+
+    } else if (question.type === "short_answer") {
+      const textarea = document.getElementById(
+        "answer_" + question.id
+      );
+
+      const answer = textarea.value.trim().toLowerCase();
+
+      if (!answer) {
+        unanswered.push(index + 1);
+        feedback.push("Question " + (index + 1) + ": Not answered");
+        return;
+      }
+
+      answeredCount++;
+
+      const rubric = question.rubric || [];
+      let matched = 0;
+
+      rubric.forEach(point => {
+        const keywords = point.toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .split(/\s+/)
+          .filter(word => word.length > 3);
+
+        const found = keywords.some(word => answer.includes(word));
+
+        if (found) matched++;
+      });
+
+      const fraction = rubric.length
+        ? matched / rubric.length
+        : 0;
+
+      const marks = Number(question.marks) || 0;
+      const awarded = Math.round(marks * fraction * 10) / 10;
+
+      earnedMarks += awarded;
+
+      feedback.push(
+        "Question " + (index + 1) +
+        ": " + awarded + "/" + marks +
+        " marks (simple rubric keyword matching)"
+      );
+    }
+  });
+
+  submitted = true;
+
+  const percentage = totalMarks
+    ? Math.round((earnedMarks / totalMarks) * 100)
+    : 0;
+
+  document.getElementById("examArea").style.display = "none";
+  document.getElementById("resultArea").style.display = "block";
+
+  document.getElementById("score").textContent =
+    earnedMarks.toFixed(1) + " / " + totalMarks;
+
+  document.getElementById("percentage").textContent =
+    percentage + "%";
+
+  document.getElementById("answered").textContent =
+    "Questions answered: " + answeredCount +
+    " / " + quizData.questions.length +
+    (unanswered.length
+      ? " | Unanswered: " + unanswered.join(", ")
+      : "");
+
+  const feedbackBox = document.getElementById("feedback");
+  feedbackBox.innerHTML = "<h3>Question-wise Feedback</h3>";
+
+  feedback.forEach(item => {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = item;
+    feedbackBox.appendChild(paragraph);
+  });
+
+  const note = document.createElement("p");
+  note.className = "muted";
+  note.textContent =
+    "Note: Descriptive answers use basic keyword matching for this offline demo. " +
+    "This is not semantic AI grading.";
+
+  feedbackBox.appendChild(note);
+}
+</script>
+
+</body>
+</html>
